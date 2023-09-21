@@ -16,7 +16,7 @@ public class AppleTree : MonoBehaviour
 
     void Start()
     {
-        
+        InvokeRepeating("DropApple", appleDropDelay, appleDropDelay);
     }
 
     void Update()
@@ -36,9 +36,28 @@ public class AppleTree : MonoBehaviour
 
     }
 
+    void DropApple()
+    {
+        Instantiate<GameObject>(applePrefab, transform.position, new());
+    }
+
     /*
      Labrinth with invisible walls that show shadows, walls moved / controled by player
      Symbols displayed on palnels indicates the traversable direction of the maze
      
      */
+
+    /*
+        Genres
+        - Platformer (puzzle adventure, 2D spatial), mark of the ninja, castlevania, mega man, mario
+        - Jigsaw (Orthographic 2D spatial), baba is you
+        - Block-fitting (Patten Matching), tetris, candy-crush,
+        - Escape (deduction), portal
+        - Trivia (internal: logic-pizzles, deductions, memory), (external: knowledge)
+        - Tactics (), rube goldburg machine
+    */
+
+    /*
+        Noneuclidean puzzle game in labrinth with windows showing coridors for some familiarity, like out of bounds stanley parrable 
+    */
 }
