@@ -30,4 +30,16 @@ public class HighScore : MonoBehaviour
 	{
 		if (new_score > Score) Score = new_score;
 	}
+
+	public bool resetHighScoreNow = false;
+
+    private void OnDrawGizmos()
+    {
+        if (resetHighScoreNow)
+		{
+			resetHighScoreNow = false;
+			PlayerPrefs.SetInt("HighScore", 1000);
+			Debug.LogWarning("PlayerPrefs Highscore reset to 1,000");
+		}
+    }
 }

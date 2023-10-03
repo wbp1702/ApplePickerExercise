@@ -7,6 +7,8 @@ public class ApplePicker : MonoBehaviour
 {
     public GameObject basketPrefab;
 
+    public GameObject restartButton;
+
     public int basketCount = 3;
 
     public float basketSpacing = 2.0f;
@@ -34,6 +36,16 @@ public class ApplePicker : MonoBehaviour
         Destroy(baskets[baskets.Count - 1]);
         baskets.RemoveAt(baskets.Count - 1);
 
-        if (baskets.Count == 0) SceneManager.LoadScene("_Scene_0");
+        if (baskets.Count == 0)
+        {
+            Time.timeScale = 0.0f;
+            restartButton.SetActive(true);
+        }
 	}
+
+    public void ResetLevel()
+    {
+        Time.timeScale = 1.0f;
+        SceneManager.LoadScene("_Scene_0");
+    }
 }
