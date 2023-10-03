@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ApplePicker : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class ApplePicker : MonoBehaviour
 
     public float basketInitialY = -15.0f;
 
+    private List<GameObject> baskets = new List<GameObject>();
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,12 +22,18 @@ public class ApplePicker : MonoBehaviour
         {
             GameObject basket = Instantiate(basketPrefab);
             basket.transform.position = new Vector3(0.0f, basketInitialY + i * basketSpacing, 0.0f);
+            baskets.Add(basket);
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public void AppleMissed()
+	{
+        var found = GameObject.FindGameObjectsWithTag("Apple");
+        foreach (var item in found) Destroy(item);
+
+        Destroy(baskets[baskets.Count - 1]);
+        baskets.RemoveAt(baskets.Count - 1);
+
+        if (baskets.Count == 0) SceneManager.LoadScene("_Scene_0");
+	}
 }

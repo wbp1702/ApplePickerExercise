@@ -29,7 +29,7 @@ public class AppleTree : MonoBehaviour
             pos.x = pos.x < 0 ? -boundary : boundary;
             velocity *= -1;
         }
-        else if (Random.value < changeRate) velocity *= -1;
+        else if (Random.value < (changeRate * Time.deltaTime)) velocity *= -1;
 
         transform.position = pos;
 

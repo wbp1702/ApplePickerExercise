@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 1650258107398148048}
   - component: {fileID: -2342044791800488078}
   - component: {fileID: -2210008065002421470}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Apple
-  m_TagString: Untagged
+  m_TagString: Apple
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -147,3 +147,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deletionBoundary: -16
+  applePicker: {fileID: 0}
