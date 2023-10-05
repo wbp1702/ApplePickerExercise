@@ -30,18 +30,21 @@ public class ApplePicker : MonoBehaviour
     }
 
     public void AppleMissed()
-	{
+    {
         var found = GameObject.FindGameObjectsWithTag("Apple");
         foreach (var item in found) Destroy(item);
 
         Destroy(baskets[baskets.Count - 1]);
         baskets.RemoveAt(baskets.Count - 1);
-        baskets[baskets.Count - 1].GetComponent<BoxCollider>().enabled = true;
 
         if (baskets.Count == 0)
         {
             Time.timeScale = 0.0f;
             restartButton.SetActive(true);
+        }
+        else
+        {
+            baskets[baskets.Count - 1].GetComponent<BoxCollider>().enabled = true;
         }
 	}
 
