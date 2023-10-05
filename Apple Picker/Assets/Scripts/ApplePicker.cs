@@ -20,10 +20,11 @@ public class ApplePicker : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < basketCount; i++)
         {
             GameObject basket = Instantiate(basketPrefab);
             basket.transform.position = new Vector3(0.0f, basketInitialY + i * basketSpacing, 0.0f);
+            if (i != basketCount - 1) basket.GetComponent<BoxCollider>().enabled = false;
             baskets.Add(basket);
         }
     }
@@ -35,6 +36,7 @@ public class ApplePicker : MonoBehaviour
 
         Destroy(baskets[baskets.Count - 1]);
         baskets.RemoveAt(baskets.Count - 1);
+        baskets[baskets.Count - 1].GetComponent<BoxCollider>().enabled = true;
 
         if (baskets.Count == 0)
         {
